@@ -1,0 +1,114 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  outline: 0px;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+:focus {
+  outline: 0px;
+}
+
+body {
+  height: 100vh;
+  background-color: #c7cdd3;
+  font-family: "Righteous", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#gameBoard {
+  margin: auto;
+  width: 100%;
+  max-width: 950px;
+  max-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(65px, 150px));
+  margin: 5px;
+  gap: 5px;
+}
+
+.card {
+  display: grid;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .5s;
+  -moz-backface-visibility: hidden;
+  cursor: pointer;
+}
+
+.card::before {
+  content: "";
+  padding-bottom: 100%;
+  display: block;
+}
+
+.card_front, .card_back {
+  grid-area: 1 / 1 / 2 / 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 15px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.45);
+  position: absolute;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card_front {
+  background-color: #101c2c;
+  transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
+.card_back {
+  background-color: #05c3ff;
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
+
+#gameOver {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  font-size: 50px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 50px;
+  z-index: 1;
+}
+
+#restart {
+  background-color: yellow;
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 20px;
+  font-family: "Righteous", sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+}
